@@ -1,0 +1,66 @@
+openapi: 3.0.1
+info:
+  title: Talk to Wiki Plugin
+  description: A plugin that allows the user to talk with Wiki-page using ChatGPT and llama-index.
+  version: 'v1'
+servers:
+  - url: http://localhost:5001
+paths:
+  /post-wiki-page:
+    post:
+      operationId: postWikiPage
+      summary: Post the Wiki-page from the public link.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostRequest"
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PostResponse"
+  /talk-to-wiki/{wiki_page_id}/{question}:
+    get:
+      operationId: getTalkToWiki
+      summary: Talk to the data from the Wiki page.
+      parameters:
+      - in: path
+        name: wiki_page_id
+        schema:
+            type: string
+        required: true
+        description: The Wiki-page identifier.
+      - in: path
+        name: question
+        schema:
+            type: string
+        required: true
+        description: The question to the document.
+      responses:
+        "200":
+          description: OK
+
+components:
+  schemas:
+    PostRequest:
+      type: object
+      required:
+      - wiki_page_url
+      properties:
+        wiki_page_url:
+          type: string
+          description: The public Url to the Wiki-page.
+          required: true
+    PostResponse:
+      title: PostResponse
+      required:
+        - wiki_page_id
+      type: object
+      properties:
+        wiki_page_id:
+          title: wiki_page_id
+          type: string

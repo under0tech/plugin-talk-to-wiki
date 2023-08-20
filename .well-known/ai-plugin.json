@@ -1,0 +1,19 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Wiki-page Talker",
+  "name_for_model": "Wiki_page_talker",
+  "description_for_human": "Plugin for conversations with data from Wiki-page.",
+  "description_for_model": "Plugin for conversations with data from Wiki-page.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "http://localhost:5001/openapi.yaml",
+    "is_user_authenticated": false
+  },
+  "logo_url": "http://localhost:5001/logo.png",
+  "contact_email": "misterd793@gmail.com",
+  "legal_info_url": "https://medium.com/@dmytrosazonov"
+  }
+  
